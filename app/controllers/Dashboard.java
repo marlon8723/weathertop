@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Member;
 import models.Station;
 import models.Reading;
 import play.Logger;
@@ -12,24 +13,29 @@ public class Dashboard extends Controller
 {
     public static void index() {
         Logger.info("Rendering Dashboard");
-
-        List<Station> stations = Station.findAll();
+        Member member = Accounts.getLoggedInMember();
+        List<Station> stations = member.stations;
         render ("dashboard.html", stations);
     }
 
     public static void deleteStation (Long id)
     {
+        Logger.info("Removing station ");
+        Member member = Accounts.getLoggedInMember();
         Station station = Station.findById(id);
-        Logger.info("Removing station " + station.stname);
+        member.stations.remove(station);
+        member.save();
         station.delete();
         redirect("/dashboard");
     }
 
     public static void addStation (String stname)
     {
-        Station station = new Station(stname);
-        Logger.info("Adding a new station called " + stname );
-        station.save();
-        redirect("/dashboard");
+        Logger.info("Adding a Station");
+        Member member = Accounts.getLoggedInMember();
+        Station playlist = new Station (stname);
+        member.stations.add(playlist);
+        member.save();
+        redirect ("/dashboard");
     }
 }

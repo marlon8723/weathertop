@@ -22,7 +22,6 @@ public class StationCtrl extends Controller
         double beaufort = WindConvertion.getWindConverted(station.readings);
         String dir = WindConvertion.getWindDirConverted(station.readings);
 
-
         render("station.html", station, latestReading, fahrenheit, weatherCondition, beaufort, dir );
     }
 
