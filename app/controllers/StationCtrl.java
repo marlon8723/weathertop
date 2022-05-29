@@ -1,12 +1,11 @@
 package controllers;
 
-import java.util.List;
-
 import models.Reading;
 import models.Station;
 import play.Logger;
 import play.mvc.Controller;
 import utils.StationAnalytics;
+import utils.TempConvertion;
 
 public class StationCtrl extends Controller
 {
@@ -14,9 +13,11 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Logger.info ("Station id = " + id);
-        Reading latestReading = StationAnalytics.getLatestReading(station.readings);
 
-        render("station.html", station, latestReading);
+        Reading latestReading = StationAnalytics.getLatestReading(station.readings);
+        double fahrenheit = TempConvertion.getTempConverted(station.readings);
+
+        render("station.html", station, latestReading,fahrenheit);
     }
 
     public static void deleteReading (Long id, Long readingid)
