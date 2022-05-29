@@ -20,8 +20,10 @@ public class StationCtrl extends Controller
         double fahrenheit = TempConvertion.getTempConverted(station.readings);
         String weatherCondition = WeatherConvertion.getWeatherConverted(station.readings);
         double beaufort = WindConvertion.getWindConverted(station.readings);
+        String dir = WindConvertion.getWindDirConverted(station.readings);
 
-        render("station.html", station, latestReading, fahrenheit, weatherCondition, beaufort );
+
+        render("station.html", station, latestReading, fahrenheit, weatherCondition, beaufort, dir );
     }
 
     public static void deleteReading (Long id, Long readingid)
@@ -35,9 +37,9 @@ public class StationCtrl extends Controller
         render("station.html", station);
     }
 
-    public static void addReading(Long id,int code, double temp, int windspeed,int pressure)
+    public static void addReading(Long id,int code, double temp, double windspeed, double winddirection, int pressure)
     {
-        Reading reading = new Reading(code, temp, windspeed, pressure);
+        Reading reading = new Reading(code, temp, windspeed,winddirection, pressure);
         Station station = Station.findById(id);
         station.readings.add(reading);
         station.save();

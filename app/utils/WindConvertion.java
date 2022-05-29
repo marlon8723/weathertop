@@ -45,4 +45,49 @@ public class WindConvertion {
     }
         return beaufort;
     }
+
+    public static String getWindDirConverted(List<Reading> readings)
+    {
+        Reading readinglist = null;
+        String dir = null;
+        if (readings.size() > 0 ){
+
+            readinglist = readings.get(readings.size() -1 );
+
+            if(readinglist.winddirection >= 0 && readinglist.winddirection <= 11.25) {
+                dir = "North";
+            } else if (readinglist.winddirection >11.25 && readinglist.winddirection <= 33.75) {
+                dir = "North-Northeast";
+            }else if (readinglist.winddirection >33.75 && readinglist.winddirection <= 56.25) {
+                dir = "Northeast";
+            }else if (readinglist.winddirection >56.25 && readinglist.winddirection <= 78.75) {
+                dir = "East-Northeast";
+            }else if (readinglist.winddirection >78.75 && readinglist.winddirection <= 101.25) {
+                dir = "East";
+            }else if (readinglist.winddirection >101.25 && readinglist.winddirection <= 123.75) {
+                dir = "East-Southeast";
+            }else if (readinglist.winddirection >123.75 && readinglist.winddirection <= 146.25) {
+                dir = "Southeast";
+            }else if (readinglist.winddirection >146.25 && readinglist.winddirection <= 168.75) {
+                dir = "South-Southeast";
+            }else if (readinglist.winddirection >168.75 && readinglist.winddirection <= 191.25) {
+                dir = "South";
+            }else if (readinglist.winddirection >191.25 && readinglist.winddirection <= 213.75) {
+                dir = "South-Southwest";
+            }else if (readinglist.winddirection >213.75 && readinglist.winddirection <= 236.25) {
+                dir = "Southwest";
+            }else if (readinglist.winddirection >236.25 && readinglist.winddirection <= 258.75) {
+                dir = "West-Southwest";
+            }else if (readinglist.winddirection >258.75 && readinglist.winddirection <= 281.25) {
+                dir = "West";
+            }else if (readinglist.winddirection >281.25 && readinglist.winddirection <= 303.75) {
+                dir = "West-Northwest";
+            }else if (readinglist.winddirection >303.75 && readinglist.winddirection <= 326.25) {
+                dir = "Northwest";
+            }else if (readinglist.winddirection >326.25 && readinglist.winddirection <= 348.75) {
+                dir = "North-Northwest";
+            }
+        }
+        return dir;
+    }
 }
