@@ -1,0 +1,59 @@
+#{extends 'main.html' /}
+#{set title:'Playlist' /}
+
+#{menu id:"dashboard"/}
+<div class="ui piled segment">
+    <div class="ui center aligned grid">
+        <div class="five column row">
+            <div class="ui raised segment column">
+                <h5>${station.stname}</h5>
+            </div>
+            <div class="ui raised segment column">
+                <h5>Weather</h5>
+            </div>
+            <div class="ui raised segment column">
+                <h5>Temp</h5>
+            </div>
+            <div class="ui raised segment column">
+                <h5>Wind</h5>
+            </div>
+            <div class="ui raised segment column">
+                <h5>Pressure</h5>
+            </div>
+        </div>
+    </div>
+
+    <section class="ui segment">
+        <h2 class="ui header">
+            ${station.stname}
+        </h2>
+        <table class="ui table">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Temp</th>
+                <th>Wind Speed</th>
+                <th>Pressure</th>
+            </tr>
+            </thead>
+            <tbody>
+            #{list items:station.readings, as:'reading'}
+            <tr>
+                <td>
+                    ${reading.code}
+                </td>
+                <td>
+                    ${reading.temp}
+                </td>
+                <td>
+                    ${reading.windspeed}
+                </td>
+                <td>
+                    ${reading.pressure}
+                </td>
+            </tr>
+            #{/list}
+            </tbody>
+        </table>
+    </section>
+</div>

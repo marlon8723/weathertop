@@ -1,0 +1,32 @@
+Reading(r1):
+  code: 800
+  temp: 0.5
+  windspeed: 3.5
+  pressure: 1001
+Reading(r2):
+  code: 600
+  temp: 6.0
+  windspeed: 2.0
+  pressure: 1004
+Reading(r3):
+  code: 700
+  temp: 8.0
+  windspeed: 1.0
+  pressure: 1000
+Reading(r4):
+  code: 200
+  temp: 0.5
+  windspeed: 3.5
+  pressure: 9999
+
+Station(s1):
+  stname: Tramore
+  readings:
+    - r1
+    - r2
+
+Station(s2):
+  stname: Dunmore
+  readings:
+    - r3
+    - r4
