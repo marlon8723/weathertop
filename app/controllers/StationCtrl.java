@@ -7,6 +7,7 @@ import play.mvc.Controller;
 import utils.StationAnalytics;
 import utils.TempConvertion;
 import utils.WeatherConvertion;
+import utils.WindConvertion;
 
 public class StationCtrl extends Controller
 {
@@ -18,8 +19,9 @@ public class StationCtrl extends Controller
         Reading latestReading = StationAnalytics.getLatestReading(station.readings);
         double fahrenheit = TempConvertion.getTempConverted(station.readings);
         String weatherCondition = WeatherConvertion.getWeatherConverted(station.readings);
+        double beaufort = WindConvertion.getWindConverted(station.readings);
 
-        render("station.html", station, latestReading, fahrenheit, weatherCondition );
+        render("station.html", station, latestReading, fahrenheit, weatherCondition, beaufort );
     }
 
     public static void deleteReading (Long id, Long readingid)
@@ -33,7 +35,7 @@ public class StationCtrl extends Controller
         render("station.html", station);
     }
 
-    public static void addReading(Long id,int code, double temp, double windspeed,int pressure)
+    public static void addReading(Long id,int code, double temp, int windspeed,int pressure)
     {
         Reading reading = new Reading(code, temp, windspeed, pressure);
         Station station = Station.findById(id);
