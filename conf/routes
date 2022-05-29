@@ -4,11 +4,11 @@
 
 # Home page
 GET     /                                            Start.index
-GET     /dashboard                                   Dashboard.index
-GET     /dashboard/deletestation/{id}                Dashboard.deleteStation
 GET     /about                                       About.index
 GET     /admin                                       Admin.index
+GET     /dashboard                                   Dashboard.index
 GET     /stations/{id}                               StationCtrl.index
+GET     /dashboard/deletestation/{id}                Dashboard.deleteStation
 GET     /stations/{id}/deletereading/{readingid}     StationCtrl.deleteReading
 
 POST    /stations/{id}/addreading                    StationCtrl.addReading

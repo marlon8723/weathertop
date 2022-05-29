@@ -6,6 +6,7 @@ import models.Reading;
 import models.Station;
 import play.Logger;
 import play.mvc.Controller;
+import utils.StationAnalytics;
 
 public class StationCtrl extends Controller
 {
@@ -13,7 +14,9 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Logger.info ("Station id = " + id);
-        render("station.html", station);
+        Reading latestReading = StationAnalytics.getLatestReading(station.readings);
+
+        render("station.html", station, latestReading);
     }
 
     public static void deleteReading (Long id, Long readingid)

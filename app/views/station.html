@@ -7,19 +7,23 @@
     <div class="ui center aligned grid">
         <div class="five column row">
             <div class="ui raised segment column">
-                <h5>${station.stname}</h5>
+                <h3>${station.stname}<i class="purple map marker alternate icon"></i></h3>
             </div>
             <div class="ui raised segment column">
-                <h5>Weather</h5>
+                <h3>Weather <i class="yellow cloud sun icon"></i> </h3>
+                <h5>${latestReading?.code}</h5>
             </div>
             <div class="ui raised segment column">
-                <h5>Temp</h5>
+                <h3>Temp <i class="blue temperature high icon"></i> </h3>
+                <h5>${latestReading?.temp}</h5>
             </div>
             <div class="ui raised segment column">
-                <h5>Wind</h5>
+                <h3>Wind <i class="green wind icon"></i></h3>
+                <h5>${latestReading?.windspeed}</h5>
             </div>
             <div class="ui raised segment column">
-                <h5>Pressure</h5>
+                <h3>Pressure <i class="red first order icon"></i></h3>
+                <h5>${latestReading?.pressure}</h5>
             </div>
         </div>
     </div>
