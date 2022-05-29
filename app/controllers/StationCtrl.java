@@ -6,6 +6,7 @@ import play.Logger;
 import play.mvc.Controller;
 import utils.StationAnalytics;
 import utils.TempConvertion;
+import utils.WeatherConvertion;
 
 public class StationCtrl extends Controller
 {
@@ -16,8 +17,9 @@ public class StationCtrl extends Controller
 
         Reading latestReading = StationAnalytics.getLatestReading(station.readings);
         double fahrenheit = TempConvertion.getTempConverted(station.readings);
+        String weatherCondition = WeatherConvertion.getWeatherConverted(station.readings);
 
-        render("station.html", station, latestReading,fahrenheit);
+        render("station.html", station, latestReading, fahrenheit, weatherCondition );
     }
 
     public static void deleteReading (Long id, Long readingid)
