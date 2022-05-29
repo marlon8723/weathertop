@@ -20,10 +20,21 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
+        Logger.info("Removing reading from Station " + station.stname);
         station.readings.remove(reading);
         station.save();
         reading.delete();
         render("station.html", station);
+    }
+
+    public static void addReading(Long id,int code, double temp, double windspeed,int pressure)
+    {
+        Reading reading = new Reading(code, temp, windspeed, pressure);
+        Station station = Station.findById(id);
+        station.readings.add(reading);
+        station.save();
+        redirect("/stations/" + id );
+
     }
 
 }

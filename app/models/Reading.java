@@ -10,7 +10,6 @@ public class Reading extends Model
     public int code;
     public double temp;
     public double windspeed;
-
     public int pressure;
 
     public Reading(int code, double temp, double windspeed, int pressure)

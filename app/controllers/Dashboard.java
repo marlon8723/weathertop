@@ -24,4 +24,12 @@ public class Dashboard extends Controller
         station.delete();
         redirect("/dashboard");
     }
+
+    public static void addStation (String stname)
+    {
+        Station station = new Station(stname);
+        Logger.info("Adding a new station called " + stname );
+        station.save();
+        redirect("/dashboard");
+    }
 }
